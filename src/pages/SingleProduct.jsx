@@ -43,6 +43,10 @@ const SingleProduct = () => {
           </h4>
           <p className="mt-3 text-xl">{formattedPrice}</p>
           <p className="mt-6 leading-8">{description}</p>
+
+          <div className="mt-10">
+            <button className="btn btn-secondary btn-md">Add to cart</button>
+          </div>
         </div>
       </div>
     </section>
