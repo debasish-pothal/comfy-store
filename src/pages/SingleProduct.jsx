@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { customFetch, formatPrice } from "../utils";
+import { customFetch, formatPrice, generateAmountOptions } from "../utils";
 import { Link, useLoaderData } from "react-router-dom";
 
 export const loader = async ({ params }) => {
@@ -14,6 +14,11 @@ const SingleProduct = () => {
     product.attributes;
   const formattedPrice = formatPrice(price);
   const [productColor, setProductColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
+
+  const handleAmount = (e) => {
+    setAmount(parseInt(e.target.value));
+  };
 
   return (
     <section>
@@ -62,6 +67,22 @@ const SingleProduct = () => {
                 );
               })}
             </div>
+          </div>
+
+          <div className="form-control w-full max-w-xs">
+            <label className="label" htmlFor="amount">
+              <h4 className="text-md font-medium -tracking-wider capitalize">
+                amount
+              </h4>
+            </label>
+            <select
+              className="select select-secondary select-bordered select-md"
+              id="amount"
+              value={amount}
+              onChange={handleAmount}
+            >
+              {generateAmountOptions(5)}
+            </select>
           </div>
 
           <div className="mt-10">

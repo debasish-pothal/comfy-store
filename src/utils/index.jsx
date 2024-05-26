@@ -23,3 +23,14 @@ export const formatPrice = (price) => {
   }).format((price / 100) * exchangeRate);
   return rupeesAmount;
 };
+
+export const generateAmountOptions = (number) => {
+  return Array.from({ length: number }, (_, index) => {
+    const amount = index + 1;
+    return (
+      <option key={amount} value={amount}>
+        {amount}
+      </option>
+    );
+  });
+};
