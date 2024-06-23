@@ -3,10 +3,14 @@ import { Filters, PaginationContainer, ProductsContainer } from "../components";
 import { customFetch } from "../utils";
 
 export const loader = async ({ request }) => {
-  const response = await customFetch("/products");
+  const params = Object.fromEntries([
+    ...new URL(request.url).searchParams.entries(),
+  ]);
+
+  const response = await customFetch("/products", { params });
   const { data: products, meta } = response.data;
 
-  return { products, meta };
+  return { products, meta, params };
 };
 
 const Products = () => {
