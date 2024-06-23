@@ -2,11 +2,11 @@ import React from "react";
 import { Form, useLoaderData, Link } from "react-router-dom";
 import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
+import FormRange from "./FormRange";
+import FormCheckbox from "./FormCheckbox";
 
 const Filters = () => {
   const { meta, params } = useLoaderData();
-  console.log(meta);
-  console.log(params);
   // const { search, company, category, shipping, order, price } = params;
 
   return (
@@ -43,7 +43,17 @@ const Filters = () => {
         size="select-sm"
         defaultValue=""
       />
+      {/* PRICE */}
+      <FormRange name="price" label="select price" size="range-sm" price="" />
+      {/* SHIPPING */}
+      <FormCheckbox
+        name="shipping"
+        label="free shipping"
+        size="checkbox-sm"
+        defaultValue=""
+      />
 
+      {/* BUTTONS */}
       <button type="submit" className="btn btn-primary btn-sm">
         search
       </button>
